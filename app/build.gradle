@@ -6,8 +6,8 @@ android {
 
     defaultConfig {
         applicationId "com.awad.muhammad.muhammad121taskmngr2017"
-        minSdkVersion 21
-        targetSdkVersion 25
+        minSdkVersion 23
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
     }

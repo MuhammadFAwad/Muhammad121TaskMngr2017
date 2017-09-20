@@ -1,5 +1,6 @@
 package com.awad.muhammad.muhammad121taskmngr2017;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -74,7 +76,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     {
         if (view==btnDate)
         {
+            //to get current date
             Calendar c= Calendar.getInstance();
+            int year=c.get(Calendar.YEAR);
+            int month=c.get(Calendar.MONTH);
+            int day=c.get(Calendar.DAY_OF_MONTH);
+
+            //Build Ondateset listenr
+            DatePickerDialog.OnDateSetListener dateListener=new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth)
+                {
+                    tvShowDate.setText(dayOfMonth+"/"+month+"/"+year);
+
+                }
+            };
+
+
+            //buliding Date Dialog
+            DatePickerDialog datePickerDialog=new DatePickerDialog(this,dateListener,year,month,day);
+            datePickerDialog.show();
         }
     }
 }
