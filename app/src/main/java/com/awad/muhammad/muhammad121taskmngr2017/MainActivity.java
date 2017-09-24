@@ -1,6 +1,7 @@
 package com.awad.muhammad.muhammad121taskmngr2017;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.util.Calendar;
@@ -18,6 +20,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 {
     private Button btnDate;
     private TextView tvShowDate;
+    private Button btnTime;
+    private TextView tvShowTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         btnDate = (Button) findViewById(R.id.btnDate);
         tvShowDate = (TextView) findViewById(R.id.tvShowDate);
+        btnTime = (Button) findViewById(R.id.btnTime);
+        tvShowTime = (TextView) findViewById(R.id.tvShowTime);
 
         btnDate.setOnClickListener(this); // this= the current (this) class implements this listener
 
@@ -96,6 +102,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //buliding Date Dialog
             DatePickerDialog datePickerDialog=new DatePickerDialog(this,dateListener,year,month,day);
             datePickerDialog.show();
+        }
+
+        if(view==btnTime)
+        {
+            Calendar c1= Calendar.getInstance();
+            int hour = c1.get(Calendar.HOUR);
+            int minute = c1.get(Calendar.MINUTE);
+            final TimePickerDialog.OnTimeSetListener timeListener = new TimePickerDialog.OnTimeSetListener()
+            {
+                public void onTimeSet(TimePicker timePicker, int hour, int minute)
+                {
+                    tvShowTime.setText(hour+" "+minute);
+                }
+            };
+            TimePickerDialog timePickerDialog = new TimePickerDialog(this,timeListener, minute,hour,true);
+            timePickerDialog.show();
         }
     }
 }
