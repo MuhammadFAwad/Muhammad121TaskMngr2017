@@ -113,10 +113,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             {
                 public void onTimeSet(TimePicker timePicker, int hour, int minute)
                 {
-                    tvShowTime.setText(hour+" "+minute);
+                    tvShowTime.setText(hour+":"+minute);
                 }
             };
-            TimePickerDialog timePickerDialog = new TimePickerDialog(this,timeListener, minute,hour,true);
+            TimePickerDialog timePickerDialog = new TimePickerDialog(this,timeListener, hour,minute,true);
             timePickerDialog.show();
         }
     }
